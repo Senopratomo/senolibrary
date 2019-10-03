@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: senolibrary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: senolibrary
+  template:
+    metadata:
+      labels:
+        app: senolibrary
+        tier: backend
+    spec:
+      containers:
+        - name: senolibrary
+          image: senolab/senolibrary
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          env:
+            - name: GET_HOSTS_FROM
+              value: dns
+          ports:
+            - containerPort: 8080

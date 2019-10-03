@@ -1,0 +1,23 @@
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "senolibrary",
+    "labels": {
+      "app": "senolibrary",
+      "tier": "backend"
+    }
+  },
+  "spec": {
+    "type": "NodePort",
+    "ports": [
+      {
+        "port": 8080
+      }
+    ],
+    "selector": {
+      "app": "senolibrary",
+      "tier": "backend"
+    }
+  }
+}
